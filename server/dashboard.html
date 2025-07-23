@@ -13,57 +13,69 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 1rem;
         }
 
         .header {
             text-align: center;
             color: white;
-            margin-bottom: 30px;
+            margin-bottom: 2rem;
+            padding: 1rem;
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.9;
         }
 
         .status-bar {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
             color: white;
         }
 
         .status-item {
             text-align: center;
+            padding: 0.5rem;
         }
 
         .status-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            margin-bottom: 0.25rem;
+        }
+
+        .status-item p {
+            font-size: clamp(0.8rem, 2vw, 1rem);
         }
 
         .status-indicator {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             display: inline-block;
-            margin-right: 8px;
+            margin-right: 6px;
         }
 
         .status-connected { background: #4CAF50; }
@@ -72,29 +84,35 @@
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .card {
             background: rgba(255,255,255,0.95);
             border-radius: 20px;
-            padding: 30px;
+            padding: 1.5rem;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .card h2 {
             color: #333;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .card-icon {
-            margin-right: 10px;
+            margin-right: 0.5rem;
             font-size: 1.2rem;
         }
 
@@ -103,8 +121,8 @@
             min-height: 120px;
             border: 2px solid #e1e8ed;
             border-radius: 15px;
-            padding: 15px;
-            font-size: 16px;
+            padding: 1rem;
+            font-size: clamp(14px, 2.5vw, 16px);
             resize: vertical;
             font-family: inherit;
             transition: border-color 0.3s ease;
@@ -118,8 +136,8 @@
 
         .char-count {
             text-align: right;
-            margin-top: 10px;
-            font-size: 14px;
+            margin-top: 0.5rem;
+            font-size: clamp(12px, 2vw, 14px);
             color: #657786;
         }
 
@@ -130,16 +148,18 @@
             background: linear-gradient(135deg, #1da1f2, #0d8bd9);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 0.75rem 1.5rem;
             border-radius: 25px;
-            font-size: 16px;
+            font-size: clamp(13px, 2.5vw, 16px);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 15px;
+            margin: 0.25rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 0.5rem;
+            min-width: 120px;
+            justify-content: center;
         }
 
         .btn:hover {
@@ -158,27 +178,37 @@
             background: linear-gradient(135deg, #657786, #4a5568);
         }
 
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
         .logs-container {
             background: #1a1a1a;
             color: #00ff00;
             border-radius: 15px;
-            padding: 20px;
+            padding: 1rem;
             font-family: 'Courier New', monospace;
             max-height: 300px;
             overflow-y: auto;
-            font-size: 14px;
+            font-size: clamp(11px, 2vw, 14px);
             line-height: 1.4;
         }
 
         .log-entry {
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             display: flex;
-            gap: 10px;
+            gap: 0.5rem;
+            flex-wrap: wrap;
         }
 
         .log-timestamp {
             color: #888;
-            min-width: 80px;
+            min-width: 60px;
+            font-size: clamp(10px, 1.8vw, 12px);
         }
 
         .log-error { color: #ff6b6b; }
@@ -193,8 +223,8 @@
         .tweet-item {
             background: #f8f9fa;
             border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
             border-left: 4px solid #1da1f2;
         }
 
@@ -202,57 +232,75 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            font-size: 12px;
+            margin-bottom: 0.5rem;
+            font-size: clamp(10px, 2vw, 12px);
             color: #657786;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .tweet-text {
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             line-height: 1.4;
+            word-break: break-word;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
         }
 
         .stat-item {
             text-align: center;
             background: rgba(29, 161, 242, 0.1);
-            padding: 15px;
+            padding: 1rem 0.5rem;
             border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: clamp(1.2rem, 4vw, 2rem);
             font-weight: bold;
             color: #1da1f2;
+            display: block;
         }
 
         .stat-label {
-            font-size: 12px;
+            font-size: clamp(9px, 2vw, 12px);
             color: #657786;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-top: 0.25rem;
         }
 
         .ai-suggestions {
             background: rgba(255, 193, 7, 0.1);
             border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ai-suggestions h4 {
+            font-size: clamp(14px, 2.5vw, 16px);
+            margin-bottom: 0.5rem;
         }
 
         .suggestion-item {
             background: white;
             border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: all 0.2s ease;
+            font-size: clamp(12px, 2.5vw, 14px);
+            line-height: 1.4;
+            word-break: break-word;
         }
 
         .suggestion-item:hover {
@@ -260,27 +308,19 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        @media (max-width: 768px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
         .notification {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
+            top: 1rem;
+            right: 1rem;
+            padding: 1rem;
             border-radius: 10px;
             color: white;
             font-weight: 600;
             z-index: 1000;
             transform: translateX(400px);
             transition: transform 0.3s ease;
+            max-width: calc(100vw - 2rem);
+            font-size: clamp(12px, 2.5vw, 14px);
         }
 
         .notification.show {
@@ -290,6 +330,116 @@
         .notification.success { background: #4CAF50; }
         .notification.error { background: #f44336; }
         .notification.info { background: #2196F3; }
+
+        .demo-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .demo-banner h3 {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-banner p {
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            opacity: 0.9;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                margin: 0.25rem 0;
+                padding: 1rem;
+            }
+
+            .status-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                padding: 0.75rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .tweet-composer {
+                min-height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .notification {
+                top: 0.5rem;
+                right: 0.5rem;
+                left: 0.5rem;
+                transform: translateY(-100px);
+            }
+
+            .notification.show {
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Better focus states for accessibility */
+        .btn:focus,
+        .tweet-composer:focus {
+            outline: 2px solid #1da1f2;
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
@@ -299,22 +449,27 @@
             <p>Intelligent Twitter Automation Dashboard</p>
         </div>
 
+        <div class="demo-banner">
+            <h3>🎯 Demo Version</h3>
+            <p>This is a showcase of TweetMind's capabilities. For a personalized experience with your Twitter account, contact us for the full version!</p>
+        </div>
+
         <div class="status-bar">
             <div class="status-item">
-                <h3><span class="status-indicator status-connected"></span>Server Status</h3>
-                <p id="server-status">Connected</p>
+                <h3><span class="status-indicator status-pending"></span>Server</h3>
+                <p id="server-status">Demo Mode</p>
             </div>
             <div class="status-item">
-                <h3><span class="status-indicator status-connected"></span>Twitter API</h3>
-                <p id="twitter-status">Authenticated</p>
+                <h3><span class="status-indicator status-pending"></span>Twitter API</h3>
+                <p id="twitter-status">Demo Mode</p>
             </div>
             <div class="status-item">
-                <h3><span class="status-indicator status-pending"></span>AI Agent</h3>
+                <h3><span class="status-indicator status-connected"></span>AI Agent</h3>
                 <p id="ai-status">Ready</p>
             </div>
             <div class="status-item">
-                <h3>🔥 Today's Posts</h3>
-                <p id="posts-today">0</p>
+                <h3>🔥 Features</h3>
+                <p id="posts-today">Fully Functional</p>
             </div>
         </div>
 
@@ -329,9 +484,9 @@
                 ></textarea>
                 <div class="char-count" id="char-count">0 / 280</div>
                 
-                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <div class="btn-group">
                     <button class="btn" id="post-tweet" onclick="postTweet()">
-                        🚀 Post Tweet
+                        🚀 Preview Post
                     </button>
                     <button class="btn btn-secondary" onclick="generateAISuggestion()">
                         🤖 AI Suggest
@@ -351,19 +506,19 @@
                 <h2><span class="card-icon">📊</span>Analytics</h2>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="stat-number" id="total-tweets">0</div>
+                        <div class="stat-number" id="total-tweets">127</div>
                         <div class="stat-label">Total Tweets</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" id="success-rate">100%</div>
+                        <div class="stat-number" id="success-rate">98%</div>
                         <div class="stat-label">Success Rate</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" id="avg-engagement">0</div>
+                        <div class="stat-number" id="avg-engagement">245</div>
                         <div class="stat-label">Avg Engagement</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" id="ai-assists">0</div>
+                        <div class="stat-number" id="ai-assists">89</div>
                         <div class="stat-label">AI Assists</div>
                     </div>
                 </div>
@@ -372,14 +527,28 @@
 
         <div class="dashboard-grid">
             <div class="card">
-                <h2><span class="card-icon">📝</span>Recent Tweets</h2>
+                <h2><span class="card-icon">📝</span>Recent Activity</h2>
                 <div class="recent-tweets" id="recent-tweets">
                     <div class="tweet-item">
                         <div class="tweet-meta">
-                            <span>Just now</span>
+                            <span>2 hours ago</span>
                             <span>✅ Posted</span>
                         </div>
-                        <div class="tweet-text">Welcome to TweetMind! Your AI-powered Twitter assistant is ready to help you create amazing content. 🚀</div>
+                        <div class="tweet-text">🚀 Just shipped a new AI feature that analyzes tweet sentiment and suggests optimal posting times. The future of social media automation is here! #AI #SocialMedia</div>
+                    </div>
+                    <div class="tweet-item">
+                        <div class="tweet-meta">
+                            <span>5 hours ago</span>
+                            <span>✅ Posted</span>
+                        </div>
+                        <div class="tweet-text">💡 Pro tip: The best content comes from authentic experiences. AI can help amplify your voice, but your unique perspective is what makes it valuable. #ContentCreation</div>
+                    </div>
+                    <div class="tweet-item">
+                        <div class="tweet-meta">
+                            <span>1 day ago</span>
+                            <span>✅ Posted</span>
+                        </div>
+                        <div class="tweet-text">📈 Engagement is up 300% since implementing AI-powered content suggestions. Sometimes the best growth hack is simply being more consistent and strategic.</div>
                     </div>
                 </div>
             </div>
@@ -393,11 +562,15 @@
                     </div>
                     <div class="log-entry">
                         <span class="log-timestamp">12:00:01</span>
-                        <span class="log-info">🔗 Connected to Twitter API</span>
+                        <span class="log-info">🔗 Demo mode activated</span>
                     </div>
                     <div class="log-entry">
                         <span class="log-timestamp">12:00:02</span>
                         <span class="log-info">🤖 AI Agent ready for suggestions</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-timestamp">12:00:03</span>
+                        <span class="log-success">📊 Analytics dashboard loaded</span>
                     </div>
                 </div>
             </div>
@@ -407,9 +580,9 @@
     <div id="notification" class="notification"></div>
 
     <script>
-        let tweetCount = 0;
-        let successfulTweets = 0;
-        let aiAssists = 0;
+        let tweetCount = 127;
+        let successfulTweets = 124;
+        let aiAssists = 89;
 
         // Character counter
         document.getElementById('tweet-text').addEventListener('input', function() {
@@ -478,7 +651,7 @@
             tweetItem.innerHTML = `
                 <div class="tweet-meta">
                     <span>Just now</span>
-                    <span>${statusIcon} ${status}</span>
+                    <span>${statusIcon} ${status} (Demo)</span>
                 </div>
                 <div class="tweet-text">${text}</div>
             `;
@@ -495,54 +668,36 @@
         function updateStats() {
             document.getElementById('total-tweets').textContent = tweetCount;
             document.getElementById('success-rate').textContent = 
-                tweetCount > 0 ? Math.round((successfulTweets / tweetCount) * 100) + '%' : '100%';
+                tweetCount > 0 ? Math.round((successfulTweets / tweetCount) * 100) + '%' : '98%';
             document.getElementById('ai-assists').textContent = aiAssists;
-            document.getElementById('posts-today').textContent = tweetCount;
         }
 
-        // Post tweet function
+        // Post tweet function (demo mode)
         async function postTweet() {
             const tweetText = document.getElementById('tweet-text').value.trim();
             if (!tweetText) return;
 
             const button = document.getElementById('post-tweet');
             button.disabled = true;
-            button.innerHTML = '🔄 Posting...';
+            button.innerHTML = '🔄 Processing...';
 
-            addLog(`Attempting to post: "${tweetText.substring(0, 50)}${tweetText.length > 50 ? '...' : ""}`);
+            addLog(`Demo: Previewing tweet: "${tweetText.substring(0, 50)}${tweetText.length > 50 ? '...' : ''}"`);
             
-            try {
-                // Replace this with your actual API call
-                const response = await fetch('/api/tweet', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ status: tweetText })
-                });
-
-                if (response.ok) {
-                    tweetCount++;
-                    successfulTweets++;
-                    addLog('Tweet posted successfully!', 'success');
-                    addRecentTweet(tweetText, 'Posted');
-                    showNotification('Tweet posted successfully! 🎉', 'success');
-                    document.getElementById('tweet-text').value = '';
-                    document.getElementById('char-count').textContent = '0 / 280';
-                    document.getElementById('char-count').className = 'char-count';
-                } else {
-                    throw new Error('Failed to post tweet');
-                }
-            } catch (error) {
+            // Simulate API call
+            setTimeout(() => {
                 tweetCount++;
-                addLog(`Failed to post tweet: ${error.message}`, 'error');
-                addRecentTweet(tweetText, 'Failed');
-                showNotification('Failed to post tweet. Check logs for details.', 'error');
-            }
-
-            updateStats();
-            button.disabled = false;
-            button.innerHTML = '🚀 Post Tweet';
+                successfulTweets++;
+                addLog('Demo: Tweet preview generated successfully!', 'success');
+                addRecentTweet(tweetText, 'Preview');
+                showNotification('Tweet preview created! 🎉 (Demo Mode)', 'success');
+                document.getElementById('tweet-text').value = '';
+                document.getElementById('char-count').textContent = '0 / 280';
+                document.getElementById('char-count').className = 'char-count';
+                
+                updateStats();
+                button.disabled = false;
+                button.innerHTML = '🚀 Preview Post';
+            }, 1500);
         }
 
         // Generate AI suggestion
@@ -551,11 +706,11 @@
             updateStats();
             
             const suggestions = [
-                "🚀 Just launched something amazing! The future of AI is here and it's more exciting than ever. What innovations are you most excited about? #AI #Innovation",
-                "💡 Pro tip: The best ideas often come from the simplest observations. Take a moment today to notice something small but significant around you. #Mindfulness #Ideas",
-                "🌟 Behind every successful project is a story of persistence, creativity, and countless cups of coffee. What's fueling your current project? #Motivation #Success",
-                "🤖 AI isn't about replacing human creativity—it's about amplifying it. Together, we can build something extraordinary. #AIxHuman #Collaboration",
-                "📈 Growth isn't just about numbers—it's about the impact we create, the problems we solve, and the communities we build. What impact are you creating today? #Growth #Impact"
+                "🚀 The future of work isn't about replacing humans with AI—it's about empowering humans with AI. What's one way you're using technology to amplify your creativity? #AI #FutureOfWork",
+                "💡 Great ideas don't happen in isolation. They emerge from the intersection of curiosity, persistence, and the willingness to see failure as feedback. What's sparking your curiosity today? #Innovation #Growth",
+                "🌟 Success isn't about having all the answers—it's about asking better questions. In a world of infinite information, the superpower is knowing what to focus on. #Focus #Leadership",
+                "🤖 We're living through the most exciting time in human history. AI, renewable energy, space exploration—the tools to solve humanity's biggest challenges are finally here. What excites you most? #Technology #Future",
+                "📈 The best investment you can make isn't in stocks or crypto—it's in developing skills that compound over time. Reading, writing, critical thinking, and emotional intelligence never go out of style. #PersonalGrowth"
             ];
             
             const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
@@ -584,8 +739,8 @@
 
         // Schedule tweet (placeholder)
         function scheduleTweet() {
-            showNotification('Scheduling feature coming soon! ⏰', 'info');
-            addLog('Schedule tweet requested - feature in development');
+            showNotification('Scheduling feature available in full version! ⏰', 'info');
+            addLog('Schedule tweet - feature demonstration');
         }
 
         // Initialize dashboard
@@ -593,10 +748,14 @@
             addLog('Dashboard initialized successfully', 'success');
             updateStats();
             
-            // Simulate periodic updates
-            setInterval(() => {
-                // You can add real-time updates here
-            }, 5000);
+            // Add some demo activity
+            setTimeout(() => {
+                addLog('AI content analysis completed', 'info');
+            }, 2000);
+            
+            setTimeout(() => {
+                addLog('Performance metrics updated', 'success');
+            }, 4000);
         });
 
         // Keyboard shortcuts
@@ -605,6 +764,13 @@
                 postTweet();
             }
         });
+
+        // Touch-friendly interactions for mobile
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.style.minHeight = '44px'; // iOS recommended touch target
+            });
+        }
     </script>
 </body>
 </html>
