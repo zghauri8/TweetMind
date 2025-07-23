@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "server/dashboard.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "server/dashboard.html"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "server/index.js"
+    },
+    {
+      "src": "/sse",
+      "dest": "server/index.js"
+    },
+    {
+      "src": "/messages",
+      "dest": "server/index.js"
+    },
+    {
+      "src": "/health",
+      "dest": "server/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "server/index.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
